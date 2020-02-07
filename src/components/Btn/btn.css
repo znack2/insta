@@ -1,0 +1,15 @@
+.btn {
+    border: none;
+    padding: 10px 15px;
+    background: var(--darkBlue);
+    color: var(--white);
+    font-weight: 500;
+    border-radius: 4px;
+    font-size: 1.12rem;
+    cursor: pointer;
+}
+
+.btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}

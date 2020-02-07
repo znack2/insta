@@ -1,0 +1,33 @@
+html, body, #root {
+    height: 100%;
+}
+#root  {
+    display: flex;
+    flex-direction: column;
+}
+.main-content {
+    flex: 1 0 auto;
+}
+.main-footer {
+    flex-shrink: 0;
+}
+
+.content {
+    margin: 0 auto;
+    width: 100%;
+}
+
+.content--footer {
+    background-color: var(--darkBlue);
+    color: var(--white);
+    padding: 20px 30px;
+}
+
+.content-fix {
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
+.tc {
+    text-align: center;
+}
