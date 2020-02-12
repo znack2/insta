@@ -8,4 +8,21 @@ const MAIN_TITLE_OPTIONS = {
     7: 'Получи подсказки в путешествии на основании профиля инстаграм',
 }
 
-export { MAIN_TITLE_OPTIONS }
+const RECOMMEND_RESULT_MESSAGE_OPTIONS = {
+    1: {
+        text: 'следующая рекомендация',
+        button: true,
+        action: 'refresh'
+    },
+    2: {
+        text: 'следующая рекомендация будет доступна через 10 минут'
+    },
+    3: {
+        text: 'следующая рекомендация будет доступна в ',
+        action: 'show_later'
+    },
+    4: {
+        text: 'напишите нам если рекомендация вам не подошла и мы предложим вам более подходящую'
+    }
+}
+export { MAIN_TITLE_OPTIONS, RECOMMEND_RESULT_MESSAGE_OPTIONS }

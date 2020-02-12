@@ -4,3 +4,4 @@
 
 Доступные варианты
 - mainTitle (доступные варианты в MAIN_TITLE_OPTIONS)
+- resultMessage (RECOMMEND_RESULT_MESSAGE_OPTIONS)

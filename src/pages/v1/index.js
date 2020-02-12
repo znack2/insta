@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Btn from '../../components/Btn'
 
 import Preloader from '../../components/Preloader'
+import ResultMessage from '../../components/ResultMessage'
 
 const FirstProto = () => {
 
@@ -27,6 +28,15 @@ const FirstProto = () => {
         return (
             <div className={'tc'} style={{'maxWidth': '400px', 'margin': '20px auto'}}>
                 <img src={`https://picsum.photos/400/300`} alt="" style={{'maxWidth': '100%'}}/>
+                <ResultMessage onRefresh={() => {
+                    setLoading(true)
+
+                    setTimeout(() => {
+                        setAccept(true)
+                        setLoading(false)
+                    }, 2000)
+
+                }}/>
             </div>
         )
     }
