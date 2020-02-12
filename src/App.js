@@ -2,11 +2,15 @@ import React, { Fragment } from 'react';
 
 import FirstProto from  './pages/v1'
 
+import MainTitle from './components/MainTitle'
+
 import './assets/styles/index.css'
 
 import inst from './assets/img/inst.png'
 
 const App = () => {
+  const location = new URL(window.location)
+
   return (
       <Fragment>
           <div className="main-content">
@@ -20,7 +24,7 @@ const App = () => {
                           lineHeight: '1.21'
                       }}>
                           <p>
-                              Автоматический подбор путешествия на основании вашего профиля
+                              <MainTitle option={location.searchParams.get('mainTitle')} />
                           </p>
                           <br/>
                           <img src={inst} alt="" style={{
