@@ -5,6 +5,7 @@ import Btn from '../../components/Btn'
 import Preloader from '../../components/Preloader'
 import ResultMessage from '../../components/ResultMessage'
 import PollForm from '../../components/PollForm'
+import SuccessPage from '../../components/SuccessPage'
 
 const FirstProto = () => {
 
@@ -38,8 +39,10 @@ const FirstProto = () => {
 
     if (accepted) {
         return (
-            <div className={'tc'} style={{'maxWidth': '400px', 'margin': '20px auto'}}>
-                <img src={`https://picsum.photos/400/300`} alt="" style={{'maxWidth': '100%'}}/>
+            <div className={'tc'} style={{'width': '100%', 'margin': '20px auto'}}>
+
+
+                <SuccessPage />
                 <ResultMessage onRefresh={() => {
                     setLoading(true)
 
