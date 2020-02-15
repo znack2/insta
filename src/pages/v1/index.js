@@ -6,6 +6,7 @@ import Preloader from '../../components/Preloader'
 import ResultMessage from '../../components/ResultMessage'
 import PollForm from '../../components/PollForm'
 import SuccessPage from '../../components/SuccessPage'
+import PayButton from "../../components/PayButton";
 
 const FirstProto = () => {
 
@@ -74,6 +75,8 @@ const FirstProto = () => {
 </div>`}}/>
                     </div>
                 }
+
+                <PayButton formLoaded={formLoaded} accepted={accepted}/>
             </div>
         )
     }
@@ -154,6 +157,8 @@ const FirstProto = () => {
             }}>
                 Авторизация через инстаграм
             </Btn>
+
+            <PayButton formLoaded={formLoaded} accepted={accepted}/>
         </div>
     )
 }

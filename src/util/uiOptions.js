@@ -82,4 +82,37 @@ const POLL_FORM_OPTIONS = {
     }
 }
 
-export { MAIN_TITLE_OPTIONS, RECOMMEND_RESULT_MESSAGE_OPTIONS, POLL_FORM_OPTIONS }
+const PAYMENT_BUTTONS = {
+    1: {
+        title: 'купить приложение в appStore',
+        visibility: 'always',
+    },
+    2: {
+        title: 'оплатить анализ профиля',
+        visibility: 'formLoaded',
+    },
+    3: {
+        title: 'оплатить следующие рекомендации',
+        visibility: 'accepted',
+    },
+    4: {
+        text: 'Мы проанализировали Ваш профиль и подобрали 2 уникальные рекомендации',
+        title: 'перейти чтобы оплатить',
+        visibility: 'formLoaded',
+    },
+    5: {
+        title: 'подписка на пакет 5 рекомендаций в день',
+        visibility: 'formLoaded',
+    },
+    6: {
+        title: 'подписка на пакет 5 рекомендаций в неделю',
+        visibility: 'formLoaded',
+    },
+    7: {
+        title: 'подписка на пакет 5 рекомендаций в месяц',
+        visibility: 'formLoaded',
+    }
+
+}
+
+export { MAIN_TITLE_OPTIONS, RECOMMEND_RESULT_MESSAGE_OPTIONS, POLL_FORM_OPTIONS, PAYMENT_BUTTONS }
