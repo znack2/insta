@@ -4,11 +4,13 @@ import Btn from '../../components/Btn'
 
 import Preloader from '../../components/Preloader'
 import ResultMessage from '../../components/ResultMessage'
+import PollForm from '../../components/PollForm'
 
 const FirstProto = () => {
 
 
     const [accepted, setAccept] = useState(false)
+    const [pollVisible , setPollVisible] = useState(false)
     const [loading, setLoading] = useState(false)
     const [formLoaded, setFormLoaded] = useState(false)
 
@@ -25,6 +27,15 @@ const FirstProto = () => {
         )
     }
 
+    if (pollVisible) {
+        return (
+            <PollForm onConfirm={() => {
+                setPollVisible(false)
+                setAccept(true)
+            }}/>
+        )
+    }
+
     if (accepted) {
         return (
             <div className={'tc'} style={{'maxWidth': '400px', 'margin': '20px auto'}}>
@@ -33,6 +44,7 @@ const FirstProto = () => {
                     setLoading(true)
 
                     setTimeout(() => {
+
                         setAccept(true)
                         setLoading(false)
                     }, 2000)
@@ -127,9 +139,10 @@ const FirstProto = () => {
                         setLoading(true)
 
                         setTimeout(() => {
-                            setAccept(true)
-                            setLoading(false)
                             setFormLoaded(true)
+                            setLoading(false)
+
+                            setPollVisible(true)
                         }, 2000)
 
                         newWin.close()

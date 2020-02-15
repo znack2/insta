@@ -25,4 +25,61 @@ const RECOMMEND_RESULT_MESSAGE_OPTIONS = {
         text: 'напишите нам если рекомендация вам не подошла и мы предложим вам более подходящую'
     }
 }
-export { MAIN_TITLE_OPTIONS, RECOMMEND_RESULT_MESSAGE_OPTIONS }
+
+
+const POLL_FORM_OPTIONS = {
+    1: {
+        title: 'Выберите, где вы сейчас находитесь, и система лучше подберет рекомендацию',
+        options: [
+           '#nyc 42,184,347 - New York City', '#la 32,034,926 - Los Angeles', '#Miami 24,881,300 - Miami',
+            '#Vegas - 18,414,693 - Las Vegas', '#Chicago 18,213,055 - Chicago', '#Sanfrancisco 9,033,074 - San Francisco',
+            '#Chicago 18,213,055 - Chicago', '#atl - 7,731,975 - Atlanta', '#Seattle 7,504,111 - Seattle', '#Sandiego 7,176,661 - San Diego',
+            '#boston 7,119,386 - Boston'
+        ],
+        type: 'checkbox'
+    },
+    2: {
+        title: 'Выберите с чем вы хотите сравнить нашу рекомендацию или каким сервисом вы обычно пользуетесь и доверяете',
+        options: [
+            'TripAdvaiser', 'Yell', 'Travelocity', 'GoogleMap'
+        ],
+        type: 'checkbox'
+    },
+    3: {
+        title: 'Выберите по каким данным вы хотите анализировать профиль',
+        options: [
+            "посты",
+            "комментарии",
+            "друзья",
+            "сториес"
+        ],
+        type: 'checkbox'
+    },
+    4: {
+        title: 'Выберите как часто вы используете инстаграм ',
+        options: [
+            "Новичок",
+            "Для себя",
+            "Инфлюенсер",
+            "Блогер"
+        ],
+        type: 'select'
+    },
+    5: {
+        title: 'Выберите какого типа рекомендацию вы хотите',
+        options: [
+            "для селфи",
+            "куда сходить",
+            "что посмотреть",
+            "где поесть",
+            "сюрприз"
+        ],
+        type: 'checkbox'
+    },
+    6: {
+        title: 'Выберите готовы ли вы подождать и получить более уникальную рекомендацию или получить прямо сейчас',
+        type: 'text'
+    }
+}
+
+export { MAIN_TITLE_OPTIONS, RECOMMEND_RESULT_MESSAGE_OPTIONS, POLL_FORM_OPTIONS }
