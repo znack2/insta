@@ -75,7 +75,7 @@
         margin-bottom: 20px;
     }
 
-    .openlayers-map {
+    :global(.openlayers-map) {
         min-width: 0;
     }
 }
