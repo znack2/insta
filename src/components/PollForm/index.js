@@ -12,6 +12,10 @@ export default class PollForm extends Component{
         const option = location.searchParams.get('pollForm') || 1
         const data = POLL_FORM_OPTIONS[option]
 
+        if (!data) {
+            return  null
+        }
+
         return (
             <div className={'tc'}>
                 <form

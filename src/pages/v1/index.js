@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {Fragment, useState} from 'react';
 
 import Btn from '../../components/Btn'
 
@@ -7,15 +7,17 @@ import ResultMessage from '../../components/ResultMessage'
 import PollForm from '../../components/PollForm'
 import SuccessPage from '../../components/SuccessPage'
 import PayButton from "../../components/PayButton";
+import LoadersList from "../../components/LoadersList";
 
 const FirstProto = () => {
-
 
     const [accepted, setAccept] = useState(false)
     const [pollVisible , setPollVisible] = useState(false)
     const [loading, setLoading] = useState(false)
     const [formLoaded, setFormLoaded] = useState(false)
 
+    const location = new URL(window.location)
+    const buttonOption = parseInt(location.searchParams.get('buttonOptions'), 10)
 
     if (loading) {
         return (
@@ -39,21 +41,57 @@ const FirstProto = () => {
     }
 
     if (accepted) {
+
+        let resultMarkup = null
+
+
+        if (buttonOption === 4) {
+
+            resultMarkup = (
+                <LoadersList />
+            )
+
+        } else if (buttonOption === 5) {
+
+            resultMarkup = (
+             <Fragment>
+                 <div style={{
+                     padding: `20px`,
+                     border: `1px solid rgba(43, 53, 79, 0.01);`,
+                     boderRadius: '4px',
+                     boxShadow: '2px 2px 11px 1px',
+                     maxWidth: '300px',
+                     margin: '0 auto 20px auto'
+                 }}>
+                     проанализирован профиль, найдено 10 подходящих рекомендации,
+                 </div>
+                 <Btn>
+                     перейти?
+                 </Btn>
+             </Fragment>
+            )
+        } else {
+            resultMarkup = (
+                <Fragment>
+                    <SuccessPage />
+                    <ResultMessage onRefresh={() => {
+                        setLoading(true)
+
+                        setTimeout(() => {
+
+                            setAccept(true)
+                            setLoading(false)
+                        }, 2000)
+
+                    }}/>
+                </Fragment>
+            )
+        }
+
         return (
             <div className={'tc'} style={{'width': '100%', 'margin': '20px auto'}}>
+                {resultMarkup}
 
-
-                <SuccessPage />
-                <ResultMessage onRefresh={() => {
-                    setLoading(true)
-
-                    setTimeout(() => {
-
-                        setAccept(true)
-                        setLoading(false)
-                    }, 2000)
-
-                }}/>
                 {formLoaded &&
                     <div style={{marginTop: `30px`}}>
                         <div dangerouslySetInnerHTML={{__html: `
@@ -148,14 +186,21 @@ const FirstProto = () => {
                             setFormLoaded(true)
                             setLoading(false)
 
-                            setPollVisible(true)
+                            if (buttonOption === 3 || buttonOption === 4 || buttonOption === 5) {
+                                setPollVisible(false)
+                                setAccept(true)
+                            } else {
+                                setPollVisible(true)
+
+                            }
+
                         }, 2000)
 
                         newWin.close()
                 },false);
 
             }}>
-                Авторизация через инстаграм
+                {buttonOption === 2 ? 'Авторизироваться и начать анализ' : 'Авторизация через инстаграм'}
             </Btn>
 
             <PayButton formLoaded={formLoaded} accepted={accepted}/>
