@@ -8,5 +8,5 @@
 - pollForm (форма перед опросом),( доступные варианты в POLL_FORM_OPTIONS)
 https://instateam.myjetbrains.com/youtrack/issue/INSTA-3
 - paymentButton (доступные варианты в PAYMENT_BUTTONS), параметр visibility определяет статус, на котором видна кнопка
-- buttonOptions (1-5)
+- buttonOptions (2-5)
 https://instateam.myjetbrains.com/youtrack/issue/INSTA-6
