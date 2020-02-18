@@ -40,7 +40,9 @@ export default class LoadersList extends Component {
         if (!!photoAnalyzed && !!friendsAnalyzed && !!commentsAnalyzed) {
             return (
                 <div>
-                    <Btn>
+                    <Btn onClick={() => {
+                        this.props.onComplete()
+                    }}>
                         перейти к рекомендациям
                     </Btn>
                 </div>

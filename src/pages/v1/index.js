@@ -11,20 +11,22 @@ import LoadersList from "../../components/LoadersList";
 
 const FirstProto = () => {
 
+    const location = new URL(window.location)
+
+
     const [accepted, setAccept] = useState(false)
     const [pollVisible , setPollVisible] = useState(false)
     const [loading, setLoading] = useState(false)
     const [formLoaded, setFormLoaded] = useState(false)
+    const [buttonOption, setButtonOption] = useState(parseInt(location.searchParams.get('buttonOptions'), 10))
 
-    const location = new URL(window.location)
-    const buttonOption = parseInt(location.searchParams.get('buttonOptions'), 10)
 
     if (loading) {
         return (
             <div className={'tc'} style={{'maxWidth': '400px', 'margin': '20px auto'}}>
                 <Preloader />
                 <br/>
-                <p>
+                <p className={'is-medium'}>
                     Собираю данные
                 </p>
             </div>
@@ -44,28 +46,33 @@ const FirstProto = () => {
 
         let resultMarkup = null
 
-
         if (buttonOption === 4) {
 
             resultMarkup = (
-                <LoadersList />
+                <LoadersList onComplete={() => {
+                    setAccept(true)
+                    setLoading(false)
+                    setButtonOption(null)
+                }}/>
             )
 
         } else if (buttonOption === 5) {
 
             resultMarkup = (
              <Fragment>
-                 <div style={{
-                     padding: `20px`,
-                     border: `1px solid rgba(43, 53, 79, 0.01);`,
-                     boderRadius: '4px',
-                     boxShadow: '2px 2px 11px 1px',
-                     maxWidth: '300px',
+                 <div className={'tile notification is-success'} style={{
+                     maxWidth: '500px',
                      margin: '0 auto 20px auto'
                  }}>
                      проанализирован профиль, найдено 10 подходящих рекомендации,
                  </div>
-                 <Btn>
+                 <Btn onComplete={() => {
+                     setAccept(true)
+                     setLoading(false)
+                     setButtonOption(null)
+
+
+                 }}>
                      перейти?
                  </Btn>
              </Fragment>

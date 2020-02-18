@@ -112,7 +112,6 @@ const PAYMENT_BUTTONS = {
         title: 'подписка на пакет 5 рекомендаций в месяц',
         visibility: 'formLoaded',
     }
-
 }
 
 export { MAIN_TITLE_OPTIONS, RECOMMEND_RESULT_MESSAGE_OPTIONS, POLL_FORM_OPTIONS, PAYMENT_BUTTONS }

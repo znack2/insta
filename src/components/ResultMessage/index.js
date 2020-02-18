@@ -26,9 +26,9 @@ const ResultMessage = ({onRefresh}) => {
         const d = new Date(); d.setMinutes(d.getMinutes() + 10);
 
         content = (
-            <Fragment>
+            <p>
                 {currentOption.text} {d.toLocaleString('ru', {hour: '2-digit', minute: '2-digit'})}
-            </Fragment>
+            </p>
         )
     }
 

@@ -21,29 +21,23 @@ export default class PollForm extends Component{
                 <form
                     style={{
                         textAlign: 'left',
-                        maxWidth: '300px',
+                        maxWidth: '500px',
                         margin: '20px auto',
                     }}
                     onSubmit={(e) => {
                     e.preventDefault()
                     this.props.onConfirm()
                 }}>
-                    <label style={{
-                        marginBottom: '10px'
-                    }}>
+                    <h5 className='subtitle is-5'>
                         {data.title}
-                    </label>
+                    </h5>
                     {data.type === 'checkbox' &&
                         <Fragment>
                             {data.options.map((option, i) => {
                                 return  (
-                                    <div key={`${option}-${i}`} style={{
-                                        marginBottom: '5px'
-                                    }}>
-                                        <label>
-                                            <input type="checkbox" style={{
-                                                marginRight: '10px'
-                                            }}/>
+                                    <div key={`${option}-${i}`} className={'field'}>
+                                        <label className={'checkbox'}>
+                                            <input type="checkbox"/> {' '}
                                             <span>{option}</span>
                                         </label>
                                     </div>
@@ -51,26 +45,24 @@ export default class PollForm extends Component{
                             })}
                         </Fragment>
                     }
-                    {data.type === 'select' && <div style={{
-                        marginBottom: '15px'
-                    }}>
-                        <select>
-                            {data.options.map((option) => {
-                                return (
-                                    <option value={option} key={option}>
-                                        {option}
-                                    </option>
-                                )
-                            })}
-                        </select>
+                    {data.type === 'select' && <div className={'field'}>
+                        <div className="select">
+                            <select>
+                                {data.options.map((option) => {
+                                    return (
+                                        <option value={option} key={option}>
+                                            {option}
+                                        </option>
+                                    )
+                                })}
+                            </select>
+                        </div>
                     </div>}
 
-                    {data.type === 'text' && <div>
+                    {data.type === 'text' && <div className={'field'}>
                         <Input type="text" />
                     </div>}
-                    <div style={{
-                        marginTop: '15px'
-                    }}>
+                    <div className={'field'}>
                         <Btn>
                             Анализировать
                         </Btn>

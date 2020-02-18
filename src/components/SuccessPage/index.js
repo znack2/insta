@@ -11,13 +11,13 @@ const SuccessPage = () => {
         <div>
             <div className={style.images}>
                 <img src={`https://picsum.photos/1300/500`} alt="" style={{'maxWidth': '100%'}}/>
-                <div className={style.meta}>
-                    <h1 className={style.title}>
+                <div className={`${style.meta} has-background-info`}>
+                    <h4 className={`${style.title} subtitle is-4 has-text-white-bis`}>
                         Burger Heroes
-                    </h1>
-                    <div>
+                    </h4>
+                    <p className={'has-text-white-bis'}>
                         Москва | Россия
-                    </div>
+                    </p>
                 </div>
 
             </div>

@@ -13,7 +13,7 @@ const App = () => {
 
   return (
       <Fragment>
-          <div className="main-content">
+          <div className="main-content content">
               <main className="content">
                   <div className="content-fix">
                       <div className="tc" style={{
@@ -23,7 +23,7 @@ const App = () => {
                           padding: '20px',
                           lineHeight: '1.21'
                       }}>
-                          <p>
+                          <p className={'is-medium'}>
                               <MainTitle option={location.searchParams.get('mainTitle')} />
                           </p>
                           <br/>
@@ -36,7 +36,7 @@ const App = () => {
               </main>
           </div>
 
-          <footer className={'content content--footer main-footer'}>
+          <footer className={'content content--footer has-background-info'}>
               <div className="content-fix tc">
                   © 2019-{new Date().getFullYear()} WhatNext Labs, Inc.
               </div>
