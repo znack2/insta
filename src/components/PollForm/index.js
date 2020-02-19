@@ -9,7 +9,7 @@ export default class PollForm extends Component{
     render() {
 
         const location = new URL(window.location)
-        const option = location.searchParams.get('pollForm') || 1
+        const option = location.searchParams.get('pollForm')
         const data = POLL_FORM_OPTIONS[option]
 
         if (!data) {

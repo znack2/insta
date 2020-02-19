@@ -10,6 +10,32 @@ import PayButton from "../../components/PayButton";
 import LoadersList from "../../components/LoadersList";
 
 import { PAYMENT_BUTTONS } from '../../util/uiOptions'
+import MainTitle from "../../components/MainTitle";
+import inst from "../../assets/img/inst.png";
+
+const Header = () => {
+
+    const location = new URL(window.location)
+
+
+    return (
+        <div className="tc" style={{
+            maxWidth: '500px',
+            fontSize: '1.56rem',
+            margin: '0 auto',
+            padding: '20px',
+            lineHeight: '1.21'
+        }}>
+            <p className={'is-medium'}>
+                <MainTitle option={location.searchParams.get('mainTitle')} />
+            </p>
+            <br/>
+            <img src={inst} alt="" style={{
+                maxWidth: '100%'
+            }}/>
+        </div>
+    )
+}
 
 const FirstProto = () => {
 
@@ -22,26 +48,35 @@ const FirstProto = () => {
     const [formLoaded, setFormLoaded] = useState(false)
     const [buttonOption, setButtonOption] = useState(parseInt(location.searchParams.get('buttonOptions'), 10))
     const [paymentButton, setPaymentButton] = useState(parseInt(location.searchParams.get('paymentButton'), 10))
+    const [pollForm, setPollForm] = useState(parseInt(location.searchParams.get('pollForm'), 10))
 
 
     if (loading) {
         return (
-            <div className={'tc'} style={{'maxWidth': '400px', 'margin': '20px auto'}}>
-                <Preloader />
-                <br/>
-                <p className={'is-medium'}>
-                    Собираю данные
-                </p>
-            </div>
+            <Fragment>
+                <Header />
+                <div className={'tc'} style={{'maxWidth': '400px', 'margin': '20px auto'}}>
+                    <Preloader />
+                    <br/>
+                    <p className={'is-medium'}>
+                        Собираю данные
+                    </p>
+                </div>
+            </Fragment>
+
         )
     }
 
     if (pollVisible) {
         return (
-            <PollForm onConfirm={() => {
-                setPollVisible(false)
-                setAccept(true)
-            }}/>
+            <Fragment>
+                <Header />
+                <PollForm onConfirm={() => {
+                    setPollVisible(false)
+                    setAccept(true)
+                }}/>
+            </Fragment>
+
         )
     }
 
@@ -83,8 +118,8 @@ const FirstProto = () => {
         } else if (!(formLoaded && paymentButton && PAYMENT_BUTTONS[paymentButton] &&  PAYMENT_BUTTONS[paymentButton].action === 'buy')) {
             resultMarkup = (
                 <Fragment>
-                    <SuccessPage />
-                    <ResultMessage onRefresh={() => {
+                    <SuccessPage
+                    onResultMessageRefresh={() => {
                         setLoading(true)
 
                         setTimeout(() => {
@@ -92,8 +127,8 @@ const FirstProto = () => {
                             setAccept(true)
                             setLoading(false)
                         }, 2000)
-
-                    }}/>
+                    }}
+                    />
                 </Fragment>
             )
         }
@@ -102,7 +137,7 @@ const FirstProto = () => {
             <div className={'tc'} style={{'width': '100%', 'margin': '20px auto'}}>
                 {resultMarkup}
 
-                {formLoaded && paymentButton && PAYMENT_BUTTONS[paymentButton] &&  PAYMENT_BUTTONS[paymentButton].action === 'buy' &&
+                {formLoaded && (paymentButton ?  PAYMENT_BUTTONS[paymentButton] &&  PAYMENT_BUTTONS[paymentButton].action === 'buy' : true) &&
                     <div style={{marginTop: `30px`}}>
                         <div dangerouslySetInnerHTML={{__html: `
 <style type="text/css">
@@ -111,7 +146,7 @@ const FirstProto = () => {
 \t   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
 </style>
 <div id="mc_embed_signup">
-<form action="https://stayandsmile.us4.list-manage.com/subscribe/post?u=24e39dfc101fdfd353eefbd32&amp;id=37fbf0a0ba" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+<form action="https://stayandsmile.us4.list-manage.com/subscribe/post?u=24e39dfc101fdfd353eefbd32&amp;id=37fbf0a0ba" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
     <div id="mc_embed_signup_scroll">
 <label for="mce-EMAIL">Subscribe</label>
 <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
@@ -132,6 +167,7 @@ const FirstProto = () => {
 
     return (
         <div className="tc">
+            <Header />
             {paymentButton !== 1 && <Btn onClick={() => {
 
                 const w = 500
@@ -196,7 +232,7 @@ const FirstProto = () => {
                         setFormLoaded(true)
                         setLoading(false)
 
-                        if (buttonOption === 3 || buttonOption === 4 || buttonOption === 5) {
+                        if (buttonOption === 3 || buttonOption === 4 || buttonOption === 5 || !pollForm) {
                             setPollVisible(false)
                             setAccept(true)
                         } else {

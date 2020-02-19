@@ -15,7 +15,6 @@
     display: flex;
     flex-flow: row wrap;
     position: relative;
-    min-height: 500px;
 }
 
 .images img {
@@ -46,6 +45,12 @@
     flex-flow: row wrap;
 }
 
+.refreshBtn {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
 
 .contacts {
     display: grid;
@@ -55,6 +60,12 @@
 
 .contacts-data-item a {
     color: #2b354f;
+}
+
+@media (min-width: 1250px) {
+    .images {
+        min-height: 500px;
+    }
 }
 
 @media (max-width: 1100px) {
@@ -75,9 +86,22 @@
     :global(.openlayers-map) {
         min-width: 0;
     }
+
+    .refreshBtn {
+        position: static;
+        transform: translate(0,0);
+        margin-bottom: 20px;
+    }
 }
 
 @media (max-width: 767px) {
+
+    .meta {
+        position: static;
+        width: 100%;
+        text-align: left;
+    }
+
     .body {
         display: block;
     }

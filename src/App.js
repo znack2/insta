@@ -16,21 +16,6 @@ const App = () => {
           <div className="main-content content">
               <main className="content">
                   <div className="content-fix">
-                      <div className="tc" style={{
-                          maxWidth: '500px',
-                          fontSize: '1.56rem',
-                          margin: '0 auto',
-                          padding: '20px',
-                          lineHeight: '1.21'
-                      }}>
-                          <p className={'is-medium'}>
-                              <MainTitle option={location.searchParams.get('mainTitle')} />
-                          </p>
-                          <br/>
-                          <img src={inst} alt="" style={{
-                              maxWidth: '100%'
-                          }}/>
-                      </div>
                       <FirstProto />
                   </div>
               </main>
