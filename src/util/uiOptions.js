@@ -86,31 +86,38 @@ const PAYMENT_BUTTONS = {
     1: {
         title: 'купить приложение в appStore',
         visibility: 'always',
+        action: 'buy'
     },
     2: {
         title: 'оплатить анализ профиля',
         visibility: 'formLoaded',
+        action: 'buy'
     },
     3: {
         title: 'оплатить следующие рекомендации',
         visibility: 'accepted',
+        action: 'buy'
     },
     4: {
         text: 'Мы проанализировали Ваш профиль и подобрали 2 уникальные рекомендации',
         title: 'перейти чтобы оплатить',
         visibility: 'formLoaded',
+        action: 'buy'
     },
     5: {
         title: 'подписка на пакет 5 рекомендаций в день',
         visibility: 'formLoaded',
+        action: 'buy'
     },
     6: {
         title: 'подписка на пакет 5 рекомендаций в неделю',
         visibility: 'formLoaded',
+        action: 'buy'
     },
     7: {
         title: 'подписка на пакет 5 рекомендаций в месяц',
         visibility: 'formLoaded',
+        action: 'buy'
     }
 }
 

@@ -9,6 +9,8 @@ import SuccessPage from '../../components/SuccessPage'
 import PayButton from "../../components/PayButton";
 import LoadersList from "../../components/LoadersList";
 
+import { PAYMENT_BUTTONS } from '../../util/uiOptions'
+
 const FirstProto = () => {
 
     const location = new URL(window.location)
@@ -19,6 +21,7 @@ const FirstProto = () => {
     const [loading, setLoading] = useState(false)
     const [formLoaded, setFormLoaded] = useState(false)
     const [buttonOption, setButtonOption] = useState(parseInt(location.searchParams.get('buttonOptions'), 10))
+    const [paymentButton, setPaymentButton] = useState(parseInt(location.searchParams.get('paymentButton'), 10))
 
 
     if (loading) {
@@ -77,7 +80,7 @@ const FirstProto = () => {
                  </Btn>
              </Fragment>
             )
-        } else {
+        } else if (!(formLoaded && paymentButton && PAYMENT_BUTTONS[paymentButton] &&  PAYMENT_BUTTONS[paymentButton].action === 'buy')) {
             resultMarkup = (
                 <Fragment>
                     <SuccessPage />
@@ -99,7 +102,7 @@ const FirstProto = () => {
             <div className={'tc'} style={{'width': '100%', 'margin': '20px auto'}}>
                 {resultMarkup}
 
-                {formLoaded &&
+                {formLoaded && paymentButton && PAYMENT_BUTTONS[paymentButton] &&  PAYMENT_BUTTONS[paymentButton].action === 'buy' &&
                     <div style={{marginTop: `30px`}}>
                         <div dangerouslySetInnerHTML={{__html: `
 <style type="text/css">
@@ -129,7 +132,7 @@ const FirstProto = () => {
 
     return (
         <div className="tc">
-            <Btn onClick={() => {
+            {paymentButton !== 1 && <Btn onClick={() => {
 
                 const w = 500
                 const h = 500
@@ -187,28 +190,28 @@ const FirstProto = () => {
                 );
 
                 newWin.document.getElementById("accept").addEventListener("click",() => {
-                        setLoading(true)
+                    setLoading(true)
 
-                        setTimeout(() => {
-                            setFormLoaded(true)
-                            setLoading(false)
+                    setTimeout(() => {
+                        setFormLoaded(true)
+                        setLoading(false)
 
-                            if (buttonOption === 3 || buttonOption === 4 || buttonOption === 5) {
-                                setPollVisible(false)
-                                setAccept(true)
-                            } else {
-                                setPollVisible(true)
+                        if (buttonOption === 3 || buttonOption === 4 || buttonOption === 5) {
+                            setPollVisible(false)
+                            setAccept(true)
+                        } else {
+                            setPollVisible(true)
 
-                            }
+                        }
 
-                        }, 2000)
+                    }, 2000)
 
-                        newWin.close()
+                    newWin.close()
                 },false);
 
             }}>
                 {buttonOption === 2 ? 'Авторизироваться и начать анализ' : 'Авторизация через инстаграм'}
-            </Btn>
+            </Btn>}
 
             <PayButton formLoaded={formLoaded} accepted={accepted}/>
         </div>
