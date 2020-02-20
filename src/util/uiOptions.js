@@ -114,4 +114,17 @@ const PAYMENT_BUTTONS = {
     }
 }
 
-export { MAIN_TITLE_OPTIONS, RECOMMEND_RESULT_MESSAGE_OPTIONS, POLL_FORM_OPTIONS, PAYMENT_BUTTONS }
+const RECOMMENDATION_DEFAULT = {
+    imageUrl: 'https://picsum.photos/1300/500',
+    title: 'Burger Heroes',
+    location: 'Москва | Россия',
+    address: 'Большой Сухаревский пер., 25, стр. 1',
+    phone: '+7 (111) 111-11-11',
+    webSite: 'website.ru',
+    lat: 0,
+    lng: 0,
+    zoom: 2,
+}
+
+export { MAIN_TITLE_OPTIONS, RECOMMEND_RESULT_MESSAGE_OPTIONS, POLL_FORM_OPTIONS, PAYMENT_BUTTONS,
+    RECOMMENDATION_DEFAULT }

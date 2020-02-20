@@ -13,3 +13,13 @@ https://instateam.myjetbrains.com/youtrack/issue/INSTA-6
 - показать форму подписки или рекоммендацию
 subscribe=1 - показать подписку
 иначе - рекоммендацию
+- рекоммендации:
+    recommendationImgUrl
+    recommendationTitle
+    recommendationLocation
+    recommendationAddress
+    recommendationPhone
+    recommendationWebSite
+    recommendationLng
+    recommendationLat
+    recommendationZoom

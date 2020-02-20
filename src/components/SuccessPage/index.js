@@ -6,7 +6,7 @@ import {
 
 import style from './success.module.css'
 import ResultMessage from "../ResultMessage";
-import {RECOMMEND_RESULT_MESSAGE_OPTIONS} from "../../util/uiOptions";
+import {RECOMMEND_RESULT_MESSAGE_OPTIONS, RECOMMENDATION_DEFAULT} from "../../util/uiOptions";
 
 const SuccessPage = (props) => {
 
@@ -19,13 +19,19 @@ const SuccessPage = (props) => {
         <Fragment>
             <div>
                 <div className={style.images}>
-                    <img src={`https://picsum.photos/1300/500`} alt="" style={{'maxWidth': '100%'}}/>
+                    <img src={`${location.searchParams.get('recommendationImgUrl') || RECOMMENDATION_DEFAULT.imageUrl}` } alt="" style={{'maxWidth': '100%'}}/>
                     <div className={`${style.meta} has-background-info`}>
                         <h4 className={`${style.title} subtitle is-4 has-text-white-bis`}>
-                            Burger Heroes
+                            {location.searchParams.get('recommendationTitle') ?
+                                location.searchParams.get('recommendationTitle').replace(/["']/img, "") :
+                                RECOMMENDATION_DEFAULT.title
+                            }
                         </h4>
                         <p className={'has-text-white-bis'}>
-                            Москва | Россия
+                            {location.searchParams.get('recommendationLocation') ?
+                                location.searchParams.get('recommendationLocation').replace(/["']/img, "") :
+                                RECOMMENDATION_DEFAULT.location
+                            }
                         </p>
                     </div>
                     {resultMessageOption.action === 'refresh' &&
@@ -71,21 +77,40 @@ const SuccessPage = (props) => {
                     <div className={style.contacts}>
                         <div className={style['contacts-data']}>
                             <div className={style['contacts-data-item']}>
-                                Большой Сухаревский пер., 25, стр. 1
+                                {location.searchParams.get('recommendationAddress') ?
+                                    location.searchParams.get('recommendationAddress').replace(/["']/img, "") :
+                                    RECOMMENDATION_DEFAULT.address
+                                }
                             </div>
                             <div className={style['contacts-data-item']}>
                                 <a href="tel:+71111111111">
-                                    +7 (111) 111-11-11
+                                    {location.searchParams.get('recommendationPhone') ?
+                                        location.searchParams.get('recommendationPhone').replace(/["']/img, "") :
+                                        RECOMMENDATION_DEFAULT.phone
+                                    }
                                 </a>
                             </div>
                             <div className={style['contacts-data-item']}>
-                                <a href="website.ru">
-                                    website.ru
+                                <a href={location.searchParams.get('recommendationWebSite') || RECOMMENDATION_DEFAULT.webSite}>
+                                    {location.searchParams.get('recommendationWebSite') ?
+                                        location.searchParams.get('recommendationWebSite').replace(/["']/img, "") :
+                                        RECOMMENDATION_DEFAULT.webSite
+                                    }
                                 </a>
                             </div>
                         </div>
+
                         <div className={style.map}>
-                            <Map view={{center: [0, 0], zoom: 2}}>
+                            <Map view={{center: [
+                                    location.searchParams.get('recommendationLng') ?
+                                        location.searchParams.get('recommendationLng').replace(/["']/img, "") :
+                                        RECOMMENDATION_DEFAULT.lng,
+                                    location.searchParams.get('recommendationLat') ?
+                                        location.searchParams.get('recommendationLat').replace(/["']/img, "") :
+                                        RECOMMENDATION_DEFAULT.lat
+                                ], zoom: location.searchParams.get('recommendationLng') ?
+                                    location.searchParams.get('recommendationZoom').replace(/["']/img, "") :
+                                    RECOMMENDATION_DEFAULT.zoom, projection: 'EPSG:4326',}} >
                                 <Layers>
                                     <layer.Tile/>
                                 </Layers>
