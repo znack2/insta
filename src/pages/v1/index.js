@@ -3,13 +3,11 @@ import React, {Fragment, useState} from 'react';
 import Btn from '../../components/Btn'
 
 import Preloader from '../../components/Preloader'
-import ResultMessage from '../../components/ResultMessage'
 import PollForm from '../../components/PollForm'
 import SuccessPage from '../../components/SuccessPage'
 import PayButton from "../../components/PayButton";
 import LoadersList from "../../components/LoadersList";
 
-import { PAYMENT_BUTTONS } from '../../util/uiOptions'
 import MainTitle from "../../components/MainTitle";
 import inst from "../../assets/img/inst.png";
 
@@ -115,7 +113,7 @@ const FirstProto = () => {
                  </Btn>
              </Fragment>
             )
-        } else if (!(formLoaded && paymentButton && PAYMENT_BUTTONS[paymentButton] &&  PAYMENT_BUTTONS[paymentButton].action === 'buy')) {
+        } else if (formLoaded && !location.searchParams.get('subscribe')) {
             resultMarkup = (
                 <Fragment>
                     <SuccessPage
@@ -137,7 +135,7 @@ const FirstProto = () => {
             <div className={'tc'} style={{'width': '100%', 'margin': '20px auto'}}>
                 {resultMarkup}
 
-                {formLoaded && (paymentButton ?  PAYMENT_BUTTONS[paymentButton] &&  PAYMENT_BUTTONS[paymentButton].action === 'buy' : true) &&
+                {formLoaded && location.searchParams.get('subscribe') &&
                     <div style={{marginTop: `30px`}}>
                         <div dangerouslySetInnerHTML={{__html: `
 <style type="text/css">

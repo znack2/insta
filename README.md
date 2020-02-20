@@ -10,3 +10,6 @@ https://instateam.myjetbrains.com/youtrack/issue/INSTA-3
 - paymentButton (доступные варианты в PAYMENT_BUTTONS), параметр visibility определяет статус, на котором видна кнопка
 - buttonOptions (2-5)
 https://instateam.myjetbrains.com/youtrack/issue/INSTA-6
+- показать форму подписки или рекоммендацию
+subscribe=1 - показать подписку
+иначе - рекоммендацию
