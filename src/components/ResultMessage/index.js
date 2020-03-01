@@ -2,6 +2,8 @@ import React from 'react'
 
 import Btn from '../../components/Btn'
 
+import pollStyle from '../PollForm/poll-form.module.css'
+
 
 import { RECOMMEND_RESULT_MESSAGE_OPTIONS } from '../../util/uiOptions'
 
@@ -15,10 +17,18 @@ const ResultMessage = ({onRefresh}) => {
 
     if (currentOption.button) {
         content = (
-            <Btn onClick={onRefresh}>
+            <Btn onClick={onRefresh} className={pollStyle['form-submit']}>
                 {currentOption.text}
             </Btn>
         )
+
+        if (window.width < 767) {
+            content = (
+                <Btn onClick={onRefresh} className={'success-refresh'}>
+                    {currentOption.text}
+                </Btn>
+            )
+        }
     }
 
     if (currentOption.action === 'show_later') {

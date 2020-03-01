@@ -1,0 +1,16 @@
+.wrap {
+    position: relative;
+    margin-bottom: 40px;
+    display: inline-block;
+}
+
+.wrap .title {
+    margin-bottom: 0;
+}
+
+.img {
+    width: 50px;
+    position: absolute;
+    right: 20px;
+    bottom: 0;
+}

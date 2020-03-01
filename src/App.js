@@ -15,12 +15,11 @@ const App = () => {
                   </div>
               </main>
           </div>
-
-          <footer className={'content content--footer has-background-info'}>
-              <div className="content-fix tc">
-                  © 2019-{new Date().getFullYear()} WhatNext Labs, Inc.
-              </div>
-          </footer>
+          <div className="bubble bubble-1" />
+          <div className="bubble bubble-2" />
+          <div className="bubble bubble-3" />
+          <div className="bubble bubble-4" />
+          <div className="bubble bubble-5" />
       </Fragment>
   );
 }

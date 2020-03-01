@@ -7,9 +7,13 @@ import PollForm from '../../components/PollForm'
 import SuccessPage from '../../components/SuccessPage'
 import PayButton from "../../components/PayButton";
 import LoadersList from "../../components/LoadersList";
+import MainLogo from "../../components/MainLogo";
 
 import MainTitle from "../../components/MainTitle";
-import inst from "../../assets/img/inst.png";
+
+import pollStyle from '../../components/PollForm/poll-form.module.css'
+
+import { ReactComponent as Inst } from "../../assets/img/inst-icon.svg";
 
 const Header = () => {
 
@@ -17,20 +21,23 @@ const Header = () => {
 
 
     return (
-        <div className="tc" style={{
+        <div style={{
             maxWidth: '500px',
             fontSize: '1.56rem',
             margin: '0 auto',
             padding: '20px',
             lineHeight: '1.21'
         }}>
-            <p className={'is-medium'}>
+            <div className="tc">
+                <MainLogo />
+            </div>
+            <br/>
+            <h1 className={'title is-1 has-text-white'}>
+                Analyze your profile
+            </h1>
+            <p className={'is-medium has-text-white'}>
                 <MainTitle option={location.searchParams.get('mainTitle')} />
             </p>
-            <br/>
-            <img src={inst} alt="" style={{
-                maxWidth: '100%'
-            }}/>
         </div>
     )
 }
@@ -56,7 +63,7 @@ const FirstProto = () => {
                 <div className={'tc'} style={{'maxWidth': '400px', 'margin': '20px auto'}}>
                     <Preloader />
                     <br/>
-                    <p className={'is-medium'}>
+                    <p className={'is-medium has-text-white'}>
                         Собираю данные
                     </p>
                 </div>
@@ -132,28 +139,50 @@ const FirstProto = () => {
         }
 
         return (
-            <div className={'tc'} style={{'width': '100%', 'margin': '20px auto'}}>
+            <div style={{'width': '100%', 'margin': '20px auto'}}>
                 {resultMarkup}
 
                 {formLoaded && location.searchParams.get('subscribe') &&
                     <div style={{marginTop: `30px`}}>
-                        <div dangerouslySetInnerHTML={{__html: `
-<style type="text/css">
-#mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; width:100%;}
-/* Add your own Mailchimp form style overrides in your site stylesheet or in this style block.
-\t   We recommend moving this block and the preceding CSS link to the HEAD of your HTML file. */
-</style>
-<div id="mc_embed_signup">
-<form action="https://stayandsmile.us4.list-manage.com/subscribe/post?u=24e39dfc101fdfd353eefbd32&amp;id=37fbf0a0ba" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
-    <div id="mc_embed_signup_scroll">
-<label for="mce-EMAIL">Subscribe</label>
-<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
-    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_24e39dfc101fdfd353eefbd32_37fbf0a0ba" tabindex="-1" value=""></div>
-    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-    </div>
-</form>
-</div>`}}/>
+                        <div className={`${pollStyle['form-wrap']} has-background-white`}>
+                            <div className={`${pollStyle['form-header']} tc`} style={{
+                                marginBottom: '-40px'
+                            }}>
+                               <MainLogo color={`#001229`}/>
+                            </div>
+                            <div className={`${pollStyle['form-content']} has-background-white-ter`}>
+                                <div className="tc has-text-grey">
+                                   apply for early users
+                                </div>
+                                <br/>
+                                <br/>
+                                <div id="mc_embed_signup">
+                                    <form
+                                        action="https://stayandsmile.us4.list-manage.com/subscribe/post?u=24e39dfc101fdfd353eefbd32&amp;id=37fbf0a0ba"
+                                        method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form"
+                                        className="validate" target="_blank">
+                                        <div id="mc_embed_signup_scroll" style={{
+                                            maxWidth: '300px',
+                                            margin: '0 auto'
+                                        }}>
+                                            <div className="field">
+                                                <label htmlFor="mce-EMAIL">Subscribe</label>
+                                                <input type="email" value="" name="EMAIL" className="email" id="mce-EMAIL"
+                                                       placeholder="email address" required />
+                                            </div>
+                                            <div style={{position: 'absolute', left: '-5000px'}} aria-hidden="true"><input
+                                                type="text" name="b_24e39dfc101fdfd353eefbd32_37fbf0a0ba" tabIndex="-1"/></div>
+                                            <div className="field">
+
+                                                <input type="submit" value="Subscribe" name="subscribe"
+                                                       id="mc-embedded-subscribe" className={`${pollStyle['form-submit']}`} />
+
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 }
 
@@ -164,20 +193,37 @@ const FirstProto = () => {
 
 
     return (
-        <div className="tc">
+        <div>
             <Header />
-            {paymentButton !== 1 && <Btn onClick={() => {
+            <div style={{
+                maxWidth: '500px',
+                padding: '0 20px',
+                margin: '0 auto',
+            }} className={'tc'}>
+               <span className="is-medium has-text-white">
+                    Sign up with
+                </span>
 
-                const w = 500
-                const h = 500
+            </div>
+            {paymentButton !== 1 &&
 
-                const left = (window.width/2)-(w/2);
-                const top = (window.height/2)-(h/2);
+            <div style={{
+                maxWidth: '500px',
+                padding: '20px',
+                margin: '0 auto',
+            }}>
+                <Btn className={'button is-white tc auth-btn'} onClick={() => {
 
-                const newWin = window.open('about:blank', "auth", `toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=${w}, height=${h}, top=${top}, left=${left}`);
+                    const w = 500
+                    const h = 500
 
-                newWin.document.write(
-                    `<div style="padding: 20px;font-family: 'Open Sans', sans-serif">
+                    const left = (window.width/2)-(w/2);
+                    const top = (window.height/2)-(h/2);
+
+                    const newWin = window.open('about:blank', "auth", `toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=no, resizable=no, copyhistory=no, width=${w}, height=${h}, top=${top}, left=${left}`);
+
+                    newWin.document.write(
+                        `<div style="padding: 20px;font-family: 'Open Sans', sans-serif">
                         <div>
                         <img alt="Instagram" style="max-width: 300px;"
                             src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png">
@@ -221,31 +267,37 @@ const FirstProto = () => {
                                         cursor: pointer;" onclick="window.close()">Отклонить</button>
                         </div>
                     </div>`
-                );
+                    );
 
-                newWin.document.getElementById("accept").addEventListener("click",() => {
-                    setLoading(true)
+                    newWin.document.getElementById("accept").addEventListener("click",() => {
+                        setLoading(true)
 
-                    setTimeout(() => {
-                        setFormLoaded(true)
-                        setLoading(false)
+                        setTimeout(() => {
+                            setFormLoaded(true)
+                            setLoading(false)
 
-                        if (buttonOption === 3 || buttonOption === 4 || buttonOption === 5 || !pollForm) {
-                            setPollVisible(false)
-                            setAccept(true)
-                        } else {
-                            setPollVisible(true)
+                            if (buttonOption === 3 || buttonOption === 4 || buttonOption === 5 || !pollForm) {
+                                setPollVisible(false)
+                                setAccept(true)
+                            } else {
+                                setPollVisible(true)
 
-                        }
+                            }
 
-                    }, 2000)
+                        }, 2000)
 
-                    newWin.close()
-                },false);
+                        newWin.close()
+                    },false);
 
-            }}>
-                {buttonOption === 2 ? 'Авторизироваться и начать анализ' : 'Авторизация через инстаграм'}
-            </Btn>}
+                }}>
+                    <span className="auth-btn-icon">
+                        <Inst />
+                    </span>
+                    <span className="auth-btn-content">
+                        {buttonOption === 2 ? 'Авторизироваться и начать анализ' : 'Авторизация через инстаграм'}
+                    </span>
+                </Btn>
+            </div>}
 
             <PayButton formLoaded={formLoaded} accepted={accepted}/>
         </div>

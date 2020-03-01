@@ -27,6 +27,7 @@
     left: 20px;
     bottom: 20px;
     padding: 10px 20px;
+    background-color: #af79f5;
 }
 
 .title {
@@ -62,6 +63,12 @@
     color: #2b354f;
 }
 
+.whiteblock {
+    padding: 20px;
+    background: var(--white);
+    border-radius: 8px;
+}
+
 @media (min-width: 1250px) {
     .images {
         min-height: 500px;
@@ -86,20 +93,33 @@
     :global(.openlayers-map) {
         min-width: 0;
     }
-
-    .refreshBtn {
-        position: static;
-        transform: translate(0,0);
-        margin-bottom: 20px;
-    }
 }
 
 @media (max-width: 767px) {
 
-    .meta {
+    .refreshBtn {
         position: static;
+        transform: translate(0,0);
+        margin-bottom: -20px;
+        margin-left: -20px;
+        margin-right: -20px;
+    }
+
+    .refreshBtn button {
         width: 100%;
+        background-color: #af79f5;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    .meta {
+        position: relative;
+        background: transparent;
+        padding: 0 30px 0 0;
+        width: calc(100% - 90px);
         text-align: left;
+        left: 0;
+        bottom: 0;
     }
 
     .body {
@@ -112,5 +132,34 @@
 
     .contacts {
         display: block;
+    }
+
+    .map {
+        margin-left: -20px;
+        margin-right: -20px;
+    }
+
+    .images {
+        margin: -30px auto 40px auto;
+        background: #FFFFFF;
+        box-shadow: 0 4px 4px rgba(83, 41, 244, 0.08);
+        border-radius: 3px;
+        display: flex;
+        overflow: hidden;
+        padding: 10px;
+    }
+
+    .images img {
+        width: 80px;
+        height: 80px;
+        margin-right: 10px;
+        object-fit: cover;
+    }
+
+    .directions {
+        width: 20px;
+        position: absolute;
+        right: 10px;
+       top: 0;
     }
 }
