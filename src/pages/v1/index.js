@@ -33,10 +33,10 @@ const Header = () => {
             </div>
             <br/>
             <h1 className={'title is-1 has-text-white'}>
-                Analyze your profile
+                <MainTitle option={location.searchParams.get('mainTitle')} />
             </h1>
             <p className={'is-medium has-text-white'}>
-                <MainTitle option={location.searchParams.get('mainTitle')} />
+                Travel recommendation system 
             </p>
         </div>
     )
@@ -64,7 +64,7 @@ const FirstProto = () => {
                     <Preloader />
                     <br/>
                     <p className={'is-medium has-text-white'}>
-                        Собираю данные
+                        Analyze profile
                     </p>
                 </div>
             </Fragment>
@@ -107,17 +107,8 @@ const FirstProto = () => {
                      maxWidth: '500px',
                      margin: '0 auto 20px auto'
                  }}>
-                     проанализирован профиль, найдено 10 подходящих рекомендации,
+                     Your profile has been checked and found 10 recommendations,
                  </div>
-                 <Btn onComplete={() => {
-                     setAccept(true)
-                     setLoading(false)
-                     setButtonOption(null)
-
-
-                 }}>
-                     перейти?
-                 </Btn>
              </Fragment>
             )
         } else if (formLoaded && !location.searchParams.get('subscribe')) {
@@ -195,16 +186,6 @@ const FirstProto = () => {
     return (
         <div>
             <Header />
-            <div style={{
-                maxWidth: '500px',
-                padding: '0 20px',
-                margin: '0 auto',
-            }} className={'tc'}>
-               <span className="is-medium has-text-white">
-                    Sign up with
-                </span>
-
-            </div>
             {paymentButton !== 1 &&
 
             <div style={{
@@ -229,21 +210,21 @@ const FirstProto = () => {
                             src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png">
                         </div>    
                         <p>
-                            Приложение запрашивает следующие разрешения:
+                            You must approve permissions in order to use application.
+                            It requires your permission to:
                         </p>
                         
                         <p>
                         <strong>
-                            Доступ к информации в вашем профиле
+                            Access your profile info 
                         </strong>
-                       
-                        имя пользователя, тип аккаунта
+                            username, account type, location
                         </p>
                         <p>
                         <strong>
-                            Доступ к вашим медиафайлам
+                            Access your media 
                         </strong>
-                            подписи, количество и тип медиафайлов, URL для доступа, постоянная ссылка, метка времени и миниатюра
+                            captions, media count, media types, media url, timestamp, etc, 
                         </p>
                         <div style="display: flex;">
                             <button style="border: none;
@@ -294,7 +275,10 @@ const FirstProto = () => {
                         <Inst />
                     </span>
                     <span className="auth-btn-content">
-                        {buttonOption === 2 ? 'Авторизироваться и начать анализ' : 'Авторизация через инстаграм'}
+                        {buttonOption === 2 
+                            ? 'Login and start Instagram analysis' 
+                            : 'Login with Instagram'
+                        }
                     </span>
                 </Btn>
             </div>}

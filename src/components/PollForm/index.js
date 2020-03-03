@@ -31,9 +31,6 @@ export default class PollForm extends Component{
                             </h5>
                         </div>
                         <div className={`${style['form-content']} has-background-white-ter`}>
-                            <div className="tc has-text-grey">
-                                choose what you want
-                            </div>
                             <br/>
                             <br/>
                             {data.type === 'checkbox' &&
