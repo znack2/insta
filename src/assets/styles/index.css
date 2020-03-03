@@ -1,7 +1,9 @@
 @import "~sanitize.css";
+@import "~bulma/css/bulma.css";
 
 @import "./variables/colors.css";
 
 
 @import "./base.css";
 @import "layout.css";
+@import "form.css";

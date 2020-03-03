@@ -1,0 +1,165 @@
+.body {
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    grid-gap: 20px;
+    text-align: left;
+}
+
+.body .details , .body .contacts {
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 2px 2px rgba(0,0,0,0.2);
+}
+
+.images {
+    display: flex;
+    flex-flow: row wrap;
+    position: relative;
+}
+
+.images img {
+    max-width: 100%;
+    background: #2b354f;
+}
+
+.meta {
+    position: absolute;
+    left: 20px;
+    bottom: 20px;
+    padding: 10px 20px;
+    background-color: #af79f5;
+}
+
+.title {
+    margin: 0 0 10px 0;
+}
+
+.details ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.details li {
+    margin-bottom: 10px;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.refreshBtn {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.contacts {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    grid-gap: 20px;
+}
+
+.contacts-data-item a {
+    color: #2b354f;
+}
+
+.whiteblock {
+    padding: 20px;
+    background: var(--white);
+    border-radius: 8px;
+}
+
+@media (min-width: 1250px) {
+    .images {
+        min-height: 500px;
+    }
+}
+
+@media (max-width: 1100px) {
+    .body {
+        grid-auto-columns: 200px 1fr;
+    }
+}
+
+@media (max-width: 1024px) {
+    .contacts {
+        display: block;
+    }
+
+    .contacts-data {
+        margin-bottom: 20px;
+    }
+
+    :global(.openlayers-map) {
+        min-width: 0;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .refreshBtn {
+        position: static;
+        transform: translate(0,0);
+        margin-bottom: -20px;
+        margin-left: -20px;
+        margin-right: -20px;
+    }
+
+    .refreshBtn button {
+        width: 100%;
+        background-color: #af79f5;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+    .meta {
+        position: relative;
+        background: transparent;
+        padding: 0 30px 0 0;
+        width: calc(100% - 90px);
+        text-align: left;
+        left: 0;
+        bottom: 0;
+    }
+
+    .body {
+        display: block;
+    }
+
+    .details {
+        margin-bottom: 20px;
+    }
+
+    .contacts {
+        display: block;
+    }
+
+    .map {
+        margin-left: -20px;
+        margin-right: -20px;
+    }
+
+    .images {
+        margin: -30px auto 40px auto;
+        background: #FFFFFF;
+        box-shadow: 0 4px 4px rgba(83, 41, 244, 0.08);
+        border-radius: 3px;
+        display: flex;
+        overflow: hidden;
+        padding: 10px;
+    }
+
+    .images img {
+        width: 80px;
+        height: 80px;
+        margin-right: 10px;
+        object-fit: cover;
+    }
+
+    .directions {
+        width: 20px;
+        position: absolute;
+        right: 10px;
+       top: 0;
+    }
+}

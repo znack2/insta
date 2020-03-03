@@ -1,5 +1,5 @@
 html, body, #root {
-    height: 100%;
+    min-height: 100%;
 }
 #root  {
     display: flex;
@@ -18,7 +18,6 @@ html, body, #root {
 }
 
 .content--footer {
-    background-color: var(--darkBlue);
     color: var(--white);
     padding: 20px 30px;
 }
@@ -26,8 +25,107 @@ html, body, #root {
 .content-fix {
     max-width: 1200px;
     padding: 0 20px;
+    margin: 0 auto;
 }
 
 .tc {
     text-align: center;
+}
+
+.auth-btn {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: auto;
+}
+
+.auth-btn-content {
+    font-size: 0.87rem;
+    color: #5E72E4;
+    white-space: normal;
+}
+
+.auth-btn-icon {
+    width: 18px;
+    margin-right: 15px;
+}
+
+.bubble {
+    background-color: rgba(255, 255, 255, 0.4);
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute;
+}
+.bubble-1 {
+    opacity: 0.5;
+    left: 44vw;
+    top: 28vh;
+    transform: translate(0, 0) scale(0.81);
+}
+.bubble-2 {
+    opacity: 0.89;
+    left: 2vw;
+    top: 6vh;
+    animation: move-2 30.04s infinite;
+    transform: translate(0, 0) scale(1.87);
+}
+.bubble-3 {
+    opacity: 0.39;
+    left: 71vw;
+    top: 83vh;
+    animation: move-3 30.06s infinite;
+    transform: translate(0, 0) scale(2.01);
+}
+.bubble-4 {
+    opacity: 0.07;
+    left: 81vw;
+    top: 93vh;
+    animation: move-4 30.08s infinite;
+    transform: translate(0, 0) scale(1.22);
+}
+.bubble-5 {
+    opacity: 0.53;
+    left: 1vw;
+    top: 97vh;
+    animation: move-5 30.1s infinite;
+    transform: translate(0, 0) scale(1.83);
+}
+
+@keyframes move-1 {
+    48% {
+        -moz-transform: translate(-96vw, -66vh);
+        -webkit-transform: translate(-96vw, -66vh);
+        transform: translate(-96vw, -66vh);
+    }
+}
+@keyframes move-2 {
+    55% {
+        -moz-transform: translate(-3vw, -29vh);
+        -webkit-transform: translate(-3vw, -29vh);
+        transform: translate(-3vw, -29vh);
+    }
+}
+@keyframes move-3 {
+    44% {
+        -moz-transform: translate(-17vw, -49vh);
+        -webkit-transform: translate(-17vw, -49vh);
+        transform: translate(-17vw, -49vh);
+    }
+}
+@keyframes move-4 {
+    60% {
+        -moz-transform: translate(-96vw, -87vh);
+        -webkit-transform: translate(-96vw, -87vh);
+        transform: translate(-96vw, -87vh);
+    }
+}
+@keyframes move-5 {
+    54% {
+        -moz-transform: translate(-47vw, -36vh);
+        -webkit-transform: translate(-47vw, -36vh);
+        transform: translate(-47vw, -36vh);
+    }
 }
